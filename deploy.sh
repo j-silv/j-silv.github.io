@@ -1,8 +1,3 @@
-#!/usr/bin/env sh
-
-# admin rights
-chmod +x ./deploy.sh
-
 # abort on errors
 set -e
 
