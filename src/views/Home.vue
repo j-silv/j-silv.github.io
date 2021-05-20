@@ -1,15 +1,15 @@
 <template>
-  <hello-world />
+  <UnderConstruction/>
 </template>
 
 <script>
-  import HelloWorld from '../components/HelloWorld'
+  import UnderConstruction from '../components/UnderConstruction'
 
   export default {
     name: 'Home',
 
     components: {
-      HelloWorld,
+      UnderConstruction,
     },
   }
 </script>
