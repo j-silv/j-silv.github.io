@@ -1,3 +1,6 @@
+# might have to type in 'runas' in powershell command prompt
+# to get admin permission to run powershell scripts
+
 # build
 npm run build
 
@@ -11,4 +14,4 @@ echo 'www.justin-silver.com' > CNAME
 cd ../
 
 # deploy to gitlab page
-# git push
+git push
