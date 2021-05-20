@@ -1,20 +1,14 @@
-# abort on errors
-set -e
-
 # build
 npm run build
 
 # navigate into the build output directory
-# cd dist
+cd docs
 
 # if you are deploying to a custom domain
-# echo 'www.example.com' > CNAME
+echo 'www.justin-silver.com' > CNAME
 
-# git init
-# git add -A
-# git commit -m 'deploy'
+# go back to source folder
+cd ../
 
 # deploy to gitlab page
-git push
-
-cd -
+# git push
