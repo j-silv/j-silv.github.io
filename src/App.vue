@@ -32,6 +32,7 @@
       <v-tabs
         v-if="!$vuetify.breakpoint.xs"
         right
+        class="pr-5"
       >
         <v-tab
           v-for="link in links"
