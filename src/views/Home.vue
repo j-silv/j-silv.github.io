@@ -15,14 +15,17 @@
         transition="scale-transition"
         max-height="200"
       />
+      <div class="pa-9">
+      Morbi mattis ullamcorper velit. Donec orci lectus, aliquam ut, faucibus non, euismod id, nulla. Fusce convallis metus id felis luctus adipiscing. Aenean massa. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nulla consequat massa quis enim. Praesent venenatis metus at tortor pulvinar varius. Donec venenatis vulputate lorem. Phasellus accumsan cursus velit. Pellentesque ut neque.
+      </div>
     </v-sheet>
 
     <!-- PROJECT PREVIEWS -->
     <v-container fluid>
-      <v-row class="text-center">
+      <v-row class="text-start">
         <v-col class="ma-4">
-          <div class="subheading font-weight-regular display-1">
-            Check out some cool projects!
+          <div class="subheading font-italic display-1">
+            Featured projects
           </div>
         </v-col>
       </v-row>
