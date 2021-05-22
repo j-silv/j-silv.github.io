@@ -4,21 +4,34 @@
     <!-- Navigation to different site pages -->
     <v-app-bar
       app
-      color="dark"
       dark
+      dense
     >
-    <span class="text-no-wrap text-h4">
-      <span class="">JUSTIN </span>
-      <span class="font-weight-bold">SILVER</span>
-    </span>
+      <!-- for some reason the width of the toolbar div wouldn't expand to fit 
+      all the text (justin silver). To avoid the elipsis, I just threw an overflow visible to render
+      the content outside of the toolbar title. -->
+      <v-toolbar-title style="overflow:visible;">
+        <span class="text-h5">
+          JUSTIN <span class="font-weight-bold">SILVER</span>
+        </span>
+      </v-toolbar-title>
 
-      <!-- I want the tabs centered, but i'm not sure how to align
-      them with the title thats aligned start. Gotta look into documentation
-      for tabs and title in app bar -->
+      <!-- If the viewport is too small, we'll render the tabs in the extended slot  -->
+      <template v-if="$vuetify.breakpoint.xs" v-slot:extension>
+        <v-tabs centered>
+          <v-tab
+            v-for="link in links"
+            :key="link"
+          >
+            {{ link }}
+          </v-tab>
+        </v-tabs>
+      </template>
+
+      <!-- otherwise, navigation is to the right of my name  -->
       <v-tabs
+        v-if="!$vuetify.breakpoint.xs"
         right
-        class=""
-        color="light darken-1"
       >
         <v-tab
           v-for="link in links"
@@ -29,6 +42,7 @@
       </v-tabs>
 
     </v-app-bar>
+
 
     <!-- Actual view that we're rendering with vue-router -->
     <v-main>
