@@ -46,7 +46,7 @@
           :key="project.project.slug"
           cols="4"
         >
-          <v-card>
+          <v-card :to="'/projects/' + project.project.slug">
             <v-img
               height="10em"
               contain
@@ -55,6 +55,15 @@
             <!-- We don't want to break the title in the middle of a word, so apply word-break -->
             <v-card-title style="word-break: normal;">{{ project.project.fields.name }}</v-card-title>
             <v-card-subtitle>{{ project.project.fields.description }}</v-card-subtitle>
+          </v-card>
+        </v-col>
+
+        <!-- Check out more projects link... -->
+        <v-col
+          cols="4"
+        >
+          <v-card to="/projects" height="15em" class="d-flex align-center">
+            <div class="text-h4 text-center">Check out more projects...</div>
           </v-card>
         </v-col>
 

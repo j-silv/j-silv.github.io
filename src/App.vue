@@ -39,33 +39,44 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn v-for="icon in icons" :key="icon" icon dark class="mx-2">
+      <!-- target="_blank" for opening in new tab -->
+      <v-btn
+        target="_blank"
+        v-for="icon in icons"
+        :key="icon.name"
+        :href="icon.link"
+        icon
+        dark
+        class="mx-2"
+      >
         <v-icon size="30px" dark>
-          {{ icon }}
+          {{ icon.name }}
         </v-icon>
       </v-btn>
 
-      <div style="max-height: 30px;" class="mx-2 mb-1">
-        <v-img 
+      <v-btn text target="_blank" href="https://buttercms.com/" style="max-height: 30px;">
+        <v-img
           alt="Butter CMS logo"
           src="@/assets/buttercms_logo_white.png"
           transition="scale-transition"
           max-width="140"
         />
-      </div>
+      </v-btn>
     </v-footer>
   </v-app>
 </template>
 
 <script>
-
 export default {
   name: "App",
   data() {
     return {
       links: ["Home", "Projects", "Contact"],
-      icons: ["mdi-github", "mdi-linkedin"],
-    }
+      icons: [
+        { name: "mdi-github", link: "https://www.github.com/sir-drako" },
+        { name: "mdi-linkedin", link: "https://www.linkedin.com/in/justin-silver/" },
+      ],
+    };
   },
 };
 </script>
