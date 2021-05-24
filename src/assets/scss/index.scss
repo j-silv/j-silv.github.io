@@ -8,3 +8,29 @@
         max-width: 100%;
     }
 }
+
+/*Formatting for Arduino code*/
+.code{
+	height:300px;
+	max-width:100%;
+	border:1px solid #ccc;
+	overflow:auto; 
+	text-align:left; 
+	margin:auto;
+	font-size:initial;
+	background-color:white;
+}
+
+/*Formatting for VHDL code*/
+.code_VHDL{
+	max-height:300px;
+	max-width:100%;
+	border:1px solid #ccc;
+	overflow:auto; 
+	text-align:left; 
+	margin:auto;
+	font-size:initial;
+	
+	/*This is the color of the Notepad++ background*/
+	background-color:#0C1021;
+}
