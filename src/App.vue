@@ -14,16 +14,16 @@
       <!-- If the viewport is too small, we'll render the tabs in the extended slot  -->
       <template v-if="$vuetify.breakpoint.xs" v-slot:extension>
         <v-tabs centered>
-          <v-tab v-for="link in links" :key="link">
-            {{ link }}
+          <v-tab v-for="link in links" :key="link.name" :to="link.link">
+            {{ link.name }}
           </v-tab>
         </v-tabs>
       </template>
 
       <!-- otherwise, navigation is to the right of my name  -->
       <v-tabs v-if="!$vuetify.breakpoint.xs" right class="pr-5">
-        <v-tab v-for="link in links" :key="link">
-          {{ link }}
+        <v-tab v-for="link in links" :key="link.name" :to="link.link">
+          {{ link.name }}
         </v-tab>
       </v-tabs>
     </v-app-bar>
@@ -71,7 +71,11 @@ export default {
   name: "App",
   data() {
     return {
-      links: ["Home", "Projects", "Contact"],
+      links: [
+        {name: "Home", link: "/"}, 
+        {name: "Projects", link: "/projects"}, 
+        {name: "Contact", link: "/contact"},
+      ],
       icons: [
         { name: "mdi-github", link: "https://www.github.com/sir-drako" },
         { name: "mdi-linkedin", link: "https://www.linkedin.com/in/justin-silver/" },
