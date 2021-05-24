@@ -59,7 +59,7 @@
           :key="project.project.slug"
           cols="4"
         >
-          <v-card :to="'/projects/' + project.project.slug">
+          <v-card :to="'/project/' + project.project.slug">
             <v-img
               height="10em"
               contain
@@ -75,7 +75,7 @@
         <v-col
           cols="4"
         >
-          <v-card to="/projects" height="15em" class="d-flex align-center">
+          <v-card to="/project" height="15em" class="d-flex align-center">
             <div class="text-h4 text-center">Check out more projects...</div>
           </v-card>
         </v-col>

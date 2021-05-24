@@ -73,7 +73,7 @@ export default {
     return {
       links: [
         {name: "Home", link: "/"}, 
-        {name: "Projects", link: "/projects"}, 
+        {name: "Projects", link: "/project"}, 
         {name: "Contact", link: "/contact"},
       ],
       icons: [
