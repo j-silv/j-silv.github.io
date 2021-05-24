@@ -1,0 +1,10 @@
+.project-content-container {
+    img {
+        // 'contain' so that the object fills out its container
+        // while maintaining its aspect ratio
+        // max-width so image doesn't overflow
+        // the content container
+        object-fit: contain;
+        max-width: 100%;
+    }
+}

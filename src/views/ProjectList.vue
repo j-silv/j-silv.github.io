@@ -81,7 +81,7 @@ export default {
     return {
       slug: this.$route.name,
       pages: [],
-      page: {},
+      page: {fields: {projects: {}}},
     }
   },
 
