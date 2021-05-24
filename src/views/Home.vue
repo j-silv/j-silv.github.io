@@ -8,13 +8,26 @@
 
     <!-- CAROUSEL, IMG SLIDESHOW -->
     <v-sheet rounded elevation="5">
+
+  <v-carousel
+    cycle
+    continuous
+    hide-delimiters
+    height="300"
+    >
+    <v-carousel-item
+      v-for="(photo, i) in page.fields.carousel"
+      :key="i"
+    >
       <v-img
-        alt="Electronics image"
-        cover
-        src="https://www.nutsvolts.com/uploads/articles/NV_0704_Christopherson_Large.jpg"
+        alt="Carousel img preview"
+        contain
+        :src="photo.photo"
         transition="scale-transition"
-        max-height="200"
+        max-height="300"
       />
+    </v-carousel-item>
+  </v-carousel>
 
       <v-container fluid>
         <v-row justify="center">
