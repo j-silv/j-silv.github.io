@@ -33,7 +33,7 @@
       <Subheader content="Featured projects"></Subheader>
 
       <!-- PROJECT INFO AND CARDS -->
-      <v-container>
+      <v-container class="ma-2">
         <v-row>
           <v-col
             v-for="project in page.fields.featured"

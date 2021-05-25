@@ -2,7 +2,7 @@
   <v-container class="mt-3">
     <v-row justify="center" no-gutters>
       <v-col cols="12">
-        <v-sheet elevation="5">
+        <v-sheet elevation="5" :class="sheet_class">
           <!-- Content that this column wrapper wraps -->
           <slot></slot>
         </v-sheet>
@@ -12,5 +12,12 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    sheet_class: {
+      type: String,
+      default: '',
+    }
+  }
+};
 </script>
