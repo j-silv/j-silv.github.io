@@ -2,6 +2,7 @@
   <div>
     <!-- WELCOME MESSAGE, PAGE MESSAGE -->
     <PageHeader :content="page.fields.header"></PageHeader>
+    <v-divider></v-divider>
 
     <!-- CAROUSEL, IMG SLIDESHOW -->
     <v-sheet rounded elevation="5">
@@ -33,8 +34,8 @@
       <Subheader content="Featured projects"></Subheader>
 
       <!-- PROJECT INFO AND CARDS -->
-      <v-container class="ma-2">
-        <v-row>
+      <v-container>
+        <v-row class="ma-2">
           <v-col
             v-for="project in page.fields.featured"
             :key="project.project.slug"
@@ -47,7 +48,7 @@
                 :src="project.project.fields.photo"
               />
               <!-- We don't want to break the title in the middle of a word, so apply word-break -->
-              <v-card-title style="word-break: normal;">{{
+              <v-card-title class="word-break">{{
                 project.project.fields.name
               }}</v-card-title>
               <v-card-subtitle>{{
@@ -58,8 +59,8 @@
 
           <!-- Check out more projects link... -->
           <v-col cols="4">
-            <v-card to="/project" height="15em" class="d-flex align-center">
-              <div class="text-h4 text-center">Check out more projects...</div>
+            <v-card to="/project" height="15em" class="d-flex align-center justify-center">
+              <div class="text-h6 text-center">More projects...</div>
             </v-card>
           </v-col>
         </v-row>

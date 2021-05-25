@@ -1,6 +1,7 @@
 <template>
   <div>
     <PageHeader :content="page.fields.name"></PageHeader>
+    <v-divider></v-divider>
 
     <ColumnWrapper>
       <!-- SECTION AND CONTENT FOR PAGE -->

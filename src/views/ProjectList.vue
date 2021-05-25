@@ -1,12 +1,13 @@
 <template>
   <div>
     <PageHeader content="Projects"></PageHeader>
+    <v-divider></v-divider>
 
     <ColumnWrapper>
 
       <Subheader content="Completed/in progress"></Subheader>
-      <v-container class="ma-2">
-        <v-row>
+      <v-container>
+        <v-row class="ma-2">
           <v-col v-for="project in pages" :key="project.slug" cols="4">
             <v-card :to="'/project/' + project.slug">
               <v-img height="10em" contain :src="project.fields.photo" />
@@ -23,8 +24,8 @@
       </v-container>
 
       <Subheader content="Coming soon..."></Subheader>
-      <v-container class="ma-2">
-        <v-row>
+      <v-container>
+        <v-row class="ma-2">
           <v-col
             v-for="project in page.fields.projects.info"
             :key="project.name"
@@ -33,7 +34,7 @@
             <v-card>
               <v-img height="10em" contain :src="project.photo" />
               <!-- We don't want to break the title in the middle of a word, so apply word-break -->
-              <v-card-title style="word-break: normal;">{{
+              <v-card-title class="word-break">{{
                 project.name
               }}</v-card-title>
               <v-card-subtitle>{{ project.description }}</v-card-subtitle>
