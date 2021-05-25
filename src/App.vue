@@ -1,5 +1,6 @@
 <template>
   <v-app>
+
     <!-- Navigation to different site pages -->
     <v-app-bar app dark dense>
       <!-- for some reason the width of the toolbar div wouldn't expand to fit 
@@ -20,7 +21,7 @@
         </v-tabs>
       </template>
 
-      <!-- otherwise, navigation is to the right of my name  -->
+      <!-- otherwise, navigation is to the right of my name all on the same row  -->
       <v-tabs v-if="!$vuetify.breakpoint.xs" right class="pr-5">
         <v-tab v-for="link in links" :key="link.name" :to="link.link">
           {{ link.name }}

@@ -18,6 +18,11 @@ const routes = [
     path: '/project/:project',
     name: 'project_slug',
     component: () => import('../views/Project.vue')
+  },
+  {
+    path: '/contact',
+    name: 'contact',
+    component: () => import('../views/Contact.vue')
   }
 ]
 
