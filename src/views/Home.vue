@@ -39,7 +39,9 @@
           <v-col
             v-for="project in page.fields.featured"
             :key="project.project.slug"
-            cols="4"
+            cols="12"
+            sm="6"
+            md="4"
           >
             <v-card :to="'/project/' + project.project.slug">
               <v-img
@@ -58,7 +60,11 @@
           </v-col>
 
           <!-- Check out more projects link... -->
-          <v-col cols="4">
+          <v-col 
+          cols="12"
+          sm="6"
+          md="4"
+          >
             <v-card to="/project" height="15em" class="d-flex align-center justify-center">
               <div class="text-h6 text-center">More projects...</div>
             </v-card>
