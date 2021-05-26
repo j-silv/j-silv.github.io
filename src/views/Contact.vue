@@ -61,8 +61,10 @@
           color="transparent"
           elevation='0'
         >
+        <v-sheet elevation="20" rounded>
         <v-alert type="success" v-if="submitStatus === 'OK'">Thanks for your submission!</v-alert>
         <v-alert type="error" v-if="submitStatus === 'ERROR'">Please fill the form correctly.</v-alert>
+        </v-sheet>
           </v-snackbar>
 
   </v-container>

@@ -10,6 +10,13 @@
         object-fit: contain;
         max-width: 100%;
     }
+
+		iframe {
+			max-width: 100%;
+			margin-left: auto;
+			margin-right: auto;
+			display: block;
+		}
 }
 
 /*Formatting for Arduino code*/
