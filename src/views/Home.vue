@@ -107,7 +107,7 @@ export default {
       butter.page
         .retrieve("*", this.slug)
         .then((res) => {
-          console.log(res.data.data);
+          //console.log(res.data.data);
           this.page = res.data.data;
         })
         .catch((err) => {

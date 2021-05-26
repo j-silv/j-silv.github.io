@@ -3,87 +3,103 @@
     <PageHeader content="Contact"></PageHeader>
     <v-divider></v-divider>
 
-  <!-- Setting a max-width for contact box -->
-  <v-container style="max-width: 40em;" class="pt-0">
-    <ColumnWrapper>
-      <v-container fluid>
-        <form>
+    <!-- Setting a max-width for contact box -->
+    <v-container style="max-width: 40em;" class="pt-0">
+      <ColumnWrapper>
+        <v-container fluid>
+          <form>
+            <v-text-field
+              v-model="name"
+              :error-messages="nameErrors"
+              :counter="MAX_NAME_CHAR"
+              label="Your name"
+              required
+              @input="$v.name.$touch()"
+              @blur="$v.name.$touch()"
+            ></v-text-field>
 
-          <v-text-field
-            v-model="name"
-            :error-messages="nameErrors"
-            :counter="MAX_NAME_CHAR"
-            label="Your name"
-            required
-            @input="$v.name.$touch()"
-            @blur="$v.name.$touch()"
-          ></v-text-field>
+            <v-text-field
+              v-model="email"
+              :error-messages="emailErrors"
+              label="Your e-mail"
+              required
+              @change="$v.email.$touch()"
+              @blur="$v.email.$touch()"
+            ></v-text-field>
 
-          <v-text-field
-            v-model="email"
-            :error-messages="emailErrors"
-            label="Your e-mail"
-            required
-            @change="$v.email.$touch()"
-            @blur="$v.email.$touch()"
-          ></v-text-field>
+            <v-textarea
+              v-model="message"
+              :error-messages="messageErrors"
+              :counter="MAX_MSG_CHAR"
+              label="Your message"
+              required
+              @input="$v.message.$touch()"
+              @blur="$v.message.$touch()"
+              clearable
+              clear-icon="mdi-close-circle"
+            ></v-textarea>
 
-          <v-textarea
-            v-model="message"
-            :error-messages="messageErrors"
-            :counter="MAX_MSG_CHAR"
-            label="Your message"
-            required
-            @input="$v.message.$touch()"
-            @blur="$v.message.$touch()"
-            clearable
-            clear-icon="mdi-close-circle"
-          ></v-textarea>
-
-          <v-btn :disabled='submitStatus === "PENDING"' @click="submit">
-            submit
-          </v-btn>
-              <v-progress-circular
+            <v-btn class="mt-2" :disabled="submitStatus === 'PENDING'" @click="submit">
+              submit
+            </v-btn>
+            <v-progress-circular
               class="ml-3"
               v-if="submitStatus === 'PENDING'"
-      indeterminate
-      color="grey-darken-3"
-    ></v-progress-circular>
-
-        </form>
-      </v-container>
-    </ColumnWrapper>
+              indeterminate
+              color="grey-darken-3"
+            ></v-progress-circular>
+          </form>
+        </v-container>
+      </ColumnWrapper>
       <!-- Visual indication to user for form submission -->
       <!-- A bit of a hack to remove the black (dark) border around the content -->
-        <v-snackbar
-          v-model="snackbar"
-          :timeout="2500"
-          color="transparent"
-          elevation='0'
-        >
+      <v-snackbar
+        v-model="snackbar"
+        :timeout="2500"
+        color="transparent"
+        elevation="0"
+      >
         <v-sheet elevation="20" rounded>
-        <v-alert type="success" v-if="submitStatus === 'OK'">Thanks for your submission!</v-alert>
-        <v-alert type="error" v-if="submitStatus === 'ERROR'">Please fill the form correctly.</v-alert>
+          <v-alert type="success" v-if="submitStatus === 'OK'"
+            >Thanks for your submission!</v-alert
+          >
+          <v-alert type="error" v-if="submitStatus === 'ERROR'"
+            >Please fill the form correctly.</v-alert
+          >
+          <v-alert type="error" v-if="submitStatus === 'SEND_ERROR'"
+            >Email could not be sent, try again later</v-alert
+          >
         </v-sheet>
-          </v-snackbar>
-
-  </v-container>
-
+      </v-snackbar>
+    </v-container>
   </div>
 </template>
 
 <script>
-
 const MAX_NAME_CHAR = 30;
 const MAX_MSG_CHAR = 1000;
 const MIN_MSG_CHAR = 10;
+
+const SERVICE_ID = "service_ovk77tg";
+
+// Contact me form
+const TEMPLATE_ID = "template_vjht90v";
+
+const USER_ID = "user_L4KMlQCFjsaJHn8rw7biK";
 
 import PageHeader from "../components/PageHeader.vue";
 import ColumnWrapper from "@/components/ColumnWrapper.vue";
 
 // Form validation libraries
 import { validationMixin } from "vuelidate";
-import { required, minLength, maxLength, email } from "vuelidate/lib/validators";
+import {
+  required,
+  minLength,
+  maxLength,
+  email,
+} from "vuelidate/lib/validators";
+
+import emailjs from "emailjs-com";
 
 export default {
   components: {
@@ -109,7 +125,11 @@ export default {
   validations: {
     name: { required, maxLength: maxLength(MAX_NAME_CHAR) },
     email: { required, email },
-    message: { required, minLength: minLength(MIN_MSG_CHAR), maxLength: maxLength(MAX_MSG_CHAR) },
+    message: {
+      required,
+      minLength: minLength(MIN_MSG_CHAR),
+      maxLength: maxLength(MAX_MSG_CHAR),
+    },
   },
 
   computed: {
@@ -144,20 +164,37 @@ export default {
     submit() {
       this.$v.$touch();
       if (this.$v.$invalid) {
-        this.submitStatus = 'ERROR'
+        this.submitStatus = "ERROR";
         this.snackbar = true;
       } else {
-
-        // do your submit logic here
-        this.submitStatus = 'PENDING'
-
-        // timeout to display ok status
-        setTimeout(() => {
-          this.submitStatus = 'OK'
-          this.snackbar = true;
-        }, 500)
-
+        // submit logic
+        this.submitStatus = "PENDING";
+        this.sendEmail();
       }
+    },
+    sendEmail() {
+      var templateParams = {
+        name: this.name,
+        email: this.email,
+        message: this.message,
+      };
+
+      emailjs
+        .send(SERVICE_ID, TEMPLATE_ID, templateParams, USER_ID)
+        .then((response) => {
+          console.log(
+            "Email sucessively sent via EmailJS",
+            response.status,
+            response.text
+          );
+          this.submitStatus = "OK";
+          this.snackbar = true;
+        })
+        .catch((error) => {
+          console.log("ERROR - email could not be sent via EmailJS", error);
+          this.submitStatus = "SEND_ERROR";
+          this.snackbar = true;
+        });
     },
   },
 };

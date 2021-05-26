@@ -2,7 +2,6 @@
   <div>
     <PageHeader :content="page.fields.name"></PageHeader>
     <v-divider></v-divider>
-
     <ColumnWrapper>
       <!-- SECTION AND CONTENT FOR PAGE -->
       <div
@@ -43,7 +42,7 @@ export default {
       butter.page
         .retrieve("project", this.slug)
         .then((res) => {
-          console.log(res.data.data);
+          //console.log(res.data.data);
           this.page = res.data.data;
         })
         .catch((err) => {

@@ -76,7 +76,7 @@ export default {
       butter.page
         .list(this.slug)
         .then((res) => {
-          console.log(res.data.data);
+          //console.log(res.data.data);
           this.pages = res.data.data;
         })
         .catch((err) => {
@@ -87,7 +87,7 @@ export default {
       butter.page
         .retrieve("*", "coming-soon")
         .then((res) => {
-          console.log(res.data.data);
+          //console.log(res.data.data);
           this.page = res.data.data;
         })
         .catch((err) => {
