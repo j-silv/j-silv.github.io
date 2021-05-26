@@ -6,8 +6,13 @@
 
     <!-- CAROUSEL, IMG SLIDESHOW -->
     <v-sheet rounded elevation="5">
-      <v-carousel cycle continuous hide-delimiters height="300">
-        <v-carousel-item v-for="(photo, i) in page.fields.carousel" :key="i">
+      <v-carousel continuous hide-delimiters height="300">
+        <!-- my-auto to get the img to center within responsive container -->
+        <v-carousel-item
+          content-class="my-auto"
+          v-for="(photo, i) in page.fields.carousel"
+          :key="i"
+        >
           <v-img
             alt="Carousel img preview"
             contain
@@ -17,7 +22,7 @@
           />
         </v-carousel-item>
       </v-carousel>
-      
+
       <!-- WEBSITE DESCRIPTION SECTION -->
       <v-container fluid>
         <v-row justify="center">
@@ -60,12 +65,12 @@
           </v-col>
 
           <!-- Check out more projects link... -->
-          <v-col 
-          cols="12"
-          sm="6"
-          md="4"
-          >
-            <v-card to="/project" height="15em" class="d-flex align-center justify-center">
+          <v-col cols="12" sm="6" md="4">
+            <v-card
+              to="/project"
+              height="15em"
+              class="d-flex align-center justify-center"
+            >
               <div class="text-h6 text-center">More projects...</div>
             </v-card>
           </v-col>
