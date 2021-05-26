@@ -6,7 +6,7 @@
 
     <!-- CAROUSEL, IMG SLIDESHOW -->
     <v-sheet rounded elevation="5">
-      <v-carousel continuous hide-delimiters height="300">
+      <v-carousel cycle continuous hide-delimiters height="300">
         <!-- my-auto to get the img to center within responsive container -->
         <v-carousel-item
           content-class="my-auto"
