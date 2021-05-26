@@ -1,6 +1,6 @@
 <template>
     <v-sheet>
-        <div class="text-center text-h3 pa-5">
+        <div class="text-center heading-3 pa-5">
         {{ content }}
         </div>
     </v-sheet>

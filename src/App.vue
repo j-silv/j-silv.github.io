@@ -7,9 +7,12 @@
       all the text (justin silver). To avoid the elipsis, I just threw an overflow visible to render
       the content outside of the toolbar title. -->
       <v-toolbar-title style="overflow:visible;">
-        <span class="text-h5">
-          JUSTIN <span class="font-weight-bold">SILVER</span>
-        </span>
+        <!-- Clicking on logo also redirects to main page -->
+        <router-link to="/" class="text-decoration-none white--text">
+          <span class="text-h5">
+            JUSTIN <span class="font-weight-bold">SILVER</span>
+          </span>
+        </router-link>
       </v-toolbar-title>
 
       <!-- If the viewport is too small, we'll render the tabs in the extended slot  -->
@@ -36,34 +39,47 @@
 
     <!-- Footer for my name, GitHub and LinkedIn links and butterCMS -->
     <v-footer dark>
-      <strong class="subheading mr-5">2021 Justin Silver</strong>
+      <v-container fluid class="pa-0">
+        <v-row no-gutters justify="space-between">
+          <v-col cols="auto" class="d-flex">
+          <strong class="heading-1 ma-auto">2021 Justin Silver</strong>
+          </v-col>
+          <v-spacer></v-spacer>
+          <v-col cols="auto">
+            <!-- GitHub and LinkedIn links -->
+            <!-- target="_blank" for opening in new tab -->
+            <v-btn
+              target="_blank"
+              v-for="icon in icons"
+              :key="icon.name"
+              :href="icon.link"
+              icon
+              dark
+              class="mx-sm-1"
+            >
+              <v-icon size="1.5rem" dark>
+                {{ icon.name }}
+              </v-icon>
+            </v-btn>
 
-      <v-spacer></v-spacer>
+            <!-- ButterCMS logo -->
+            <v-btn 
+              class="px-sm-1 px-0"
+              text target="_blank" 
+              href="https://buttercms.com/" 
+              style="max-height: 1.5rem;">
+              <v-img
+                alt="Butter CMS logo"
+                src="@/assets/buttercms_logo_white.png"
+                transition="scale-transition"
+                max-width="7.3rem"
+              />
+            </v-btn>
+  </v-col>
+        </v-row>
+    </v-container>
 
-      <!-- target="_blank" for opening in new tab -->
-      <v-btn
-        target="_blank"
-        v-for="icon in icons"
-        :key="icon.name"
-        :href="icon.link"
-        icon
-        dark
-        class="mx-2"
-      >
-        <v-icon size="30px" dark>
-          {{ icon.name }}
-        </v-icon>
-      </v-btn>
-
-      <v-btn text target="_blank" href="https://buttercms.com/" style="max-height: 30px;">
-        <v-img
-          alt="Butter CMS logo"
-          src="@/assets/buttercms_logo_white.png"
-          transition="scale-transition"
-          max-width="140"
-        />
-      </v-btn>
-    </v-footer>
+        </v-footer>
   </v-app>
 </template>
 

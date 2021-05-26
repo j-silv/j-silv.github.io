@@ -3,7 +3,7 @@
     <v-container fluid>
     <v-row class="text-start">
         <v-col class="ma-4">
-        <div class="subheading display-1">
+        <div class="subheading heading-2">
             {{content}}
         </div>
         </v-col>

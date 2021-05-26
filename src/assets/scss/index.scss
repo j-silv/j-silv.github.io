@@ -1,3 +1,6 @@
+// for accessing global Vuetify SASS variables
+@import '~vuetify/src/styles/settings/variables';
+
 .project-content-container {
     img {
         // 'contain' so that the object fills out its container
@@ -55,4 +58,20 @@
 
 .word-break {
 	word-break: normal !important;
+}
+
+
+// Responsive header classes -> not a feature thats builtin to Vuetify
+@for $i from 1 through 6 {
+  .heading-#{$i} {
+    font-size: #{$i}rem;
+    line-height: 1;
+  }
+}
+@media only screen and (max-width: map-get($grid-breakpoints , 'md' )) {
+  @for $i from 1 through 6 {
+    .heading-#{$i} {
+      font-size: #{$i * 0.75}rem;
+    }
+  }
 }
