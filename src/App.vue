@@ -98,13 +98,17 @@ export default {
       ],
     };
   },
-  mounted() {
-    // issue related to tab highlights not staying in sync with tab tiles
-    // described here: https://github.com/vuetifyjs/vuetify/issues/4733
-    this.$refs.tabs && this.$refs.tabs.onResize();
-    window.dispatchEvent(new Event("resize"));
-    this.$nextTick();
-
-  }
+  methods: {
+    resizeTabs() {
+      // issue related to tab highlights not staying in sync with tab tiles
+      // described here: https://github.com/vuetifyjs/vuetify/issues/4733
+      this.$refs.tabs && this.$refs.tabs.onResize();
+    }
+  },
+  // through trial and error, this is the only Vue lifecycle hook I could find
+  // that will update the position of the highlighted tab line
+  beforeUpdate() {
+    this.resizeTabs();
+  },
 };
 </script>
