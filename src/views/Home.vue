@@ -48,20 +48,45 @@
             sm="6"
             md="4"
           >
-            <v-card :to="'/project/' + project.project.slug">
-              <v-img
-                height="10em"
-                contain
-                :src="project.project.fields.photo"
-              />
-              <!-- We don't want to break the title in the middle of a word, so apply word-break -->
-              <v-card-title class="word-break">{{
-                project.project.fields.name
-              }}</v-card-title>
-              <v-card-subtitle>{{
-                project.project.fields.description
-              }}</v-card-subtitle>
-            </v-card>
+            <v-hover>
+              <template v-slot:default="{ hover }">
+                <v-card>
+                  <v-img
+                    height="10em"
+                    contain
+                    :src="project.project.fields.photo"
+                  >
+                  </v-img>
+
+                  <!-- We don't want to break the title in the middle of a word, so apply word-break -->
+                  <v-card-title class="word-break">{{
+                    project.project.fields.name
+                  }}</v-card-title>
+                  <v-card-subtitle>{{
+                    project.project.fields.description
+                  }}</v-card-subtitle>
+
+                  <v-fade-transition>
+                    <v-overlay v-if="hover" absolute opacity="0.2">
+                          <v-btn :to="'/project/' + project.project.slug"
+                            >Goto project</v-btn>
+ 
+                      <v-btn
+                        target="_blank"
+                        v-if="project.project.fields.github_link"
+                        :href="project.project.fields.github_link"
+                        dark
+                        class="ma-2"
+                        >GitHub
+                        <v-icon medium dark class="ml-1">
+                          mdi-github
+                        </v-icon>
+                      </v-btn>
+                    </v-overlay>
+                  </v-fade-transition>
+                </v-card>
+              </template>
+            </v-hover>
           </v-col>
 
           <!-- Check out more projects link... -->
