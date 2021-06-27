@@ -67,14 +67,14 @@
                   }}</v-card-subtitle>
 
                   <v-fade-transition>
-                    <v-overlay v-if="hover" absolute opacity="0.2">
+                    <v-overlay z-index="0" v-if="hover" absolute opacity="0.2">
                       <div
                         class="d-flex justify-center flex-column flex-sm-row"
                       >
                         <v-btn
                           :to="'/project/' + project.project.slug"
                           class="ma-1"
-                          >Goto project</v-btn
+                          >Project page</v-btn
                         >
 
                         <v-btn

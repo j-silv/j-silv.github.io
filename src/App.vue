@@ -71,7 +71,6 @@
               <v-img
                 alt="Butter CMS logo"
                 src="@/assets/buttercms_logo_white.png"
-                transition="scale-transition"
                 max-width="7.3rem"
               />
             </v-btn>
