@@ -17,7 +17,7 @@
 
       <!-- If the viewport is too small, we'll render the tabs in the extended slot  -->
       <template v-if="$vuetify.breakpoint.xs" v-slot:extension>
-        <v-tabs centered>
+        <v-tabs centered ref="tabs">
           <v-tab v-for="link in links" :key="link.name" :to="link.link">
             {{ link.name }}
           </v-tab>
@@ -25,7 +25,7 @@
       </template>
 
       <!-- otherwise, navigation is to the right of my name all on the same row  -->
-      <v-tabs v-if="!$vuetify.breakpoint.xs" right class="pr-5">
+      <v-tabs v-if="!$vuetify.breakpoint.xs" right class="pr-5" ref="tabs">
         <v-tab v-for="link in links" :key="link.name" :to="link.link">
           {{ link.name }}
         </v-tab>
@@ -99,5 +99,13 @@ export default {
       ],
     };
   },
+  mounted() {
+    // issue related to tab highlights not staying in sync with tab tiles
+    // described here: https://github.com/vuetifyjs/vuetify/issues/4733
+    this.$refs.tabs && this.$refs.tabs.onResize();
+    window.dispatchEvent(new Event("resize"));
+    this.$nextTick();
+
+  }
 };
 </script>
