@@ -94,7 +94,7 @@ export default {
         {name: "Contact", link: "/contact"},
       ],
       icons: [
-        { name: "mdi-github", link: "https://www.github.com/sir-drako" },
+        { name: "mdi-github", link: "https://www.github.com/j-silv" },
         { name: "mdi-linkedin", link: "https://www.linkedin.com/in/justin-silver/" },
       ],
     };
