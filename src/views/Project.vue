@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="position:relative;">
     <PageHeader :content="page.fields.name"></PageHeader>
     <v-divider></v-divider>
     <ColumnWrapper>
@@ -13,6 +13,22 @@
         <div v-html="section.content"></div>
       </div>
     </ColumnWrapper>
+
+    <v-btn
+      fixed
+      bottom
+      right
+      target="_blank"
+      v-if="page.fields.github_link"
+      :href="page.fields.github_link"
+      dark
+      fab
+      class="ma-2"
+    >
+      <v-icon large dark>
+        mdi-github
+      </v-icon>
+    </v-btn>
   </div>
 </template>
 

@@ -68,20 +68,27 @@
 
                   <v-fade-transition>
                     <v-overlay v-if="hover" absolute opacity="0.2">
-                          <v-btn :to="'/project/' + project.project.slug"
-                            >Goto project</v-btn>
- 
-                      <v-btn
-                        target="_blank"
-                        v-if="project.project.fields.github_link"
-                        :href="project.project.fields.github_link"
-                        dark
-                        class="ma-2"
-                        >GitHub
-                        <v-icon medium dark class="ml-1">
-                          mdi-github
-                        </v-icon>
-                      </v-btn>
+                      <div
+                        class="d-flex justify-center flex-column flex-sm-row"
+                      >
+                        <v-btn
+                          :to="'/project/' + project.project.slug"
+                          class="ma-1"
+                          >Goto project</v-btn
+                        >
+
+                        <v-btn
+                          target="_blank"
+                          v-if="project.project.fields.github_link"
+                          :href="project.project.fields.github_link"
+                          dark
+                          class="ma-1"
+                          >GitHub
+                          <v-icon medium dark class="ml-1">
+                            mdi-github
+                          </v-icon>
+                        </v-btn>
+                      </div>
                     </v-overlay>
                   </v-fade-transition>
                 </v-card>

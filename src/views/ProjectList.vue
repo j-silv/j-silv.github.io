@@ -14,43 +14,44 @@
             sm="6"
             md="4"
           >
-
-           <v-hover>
+            <v-hover>
               <template v-slot:default="{ hover }">
+                <v-card>
+                  <v-img height="10em" contain :src="project.fields.photo" />
+                  <!-- We don't want to break the title in the middle of a word, so apply word-break -->
+                  <v-card-title class="word-break">{{
+                    project.fields.name
+                  }}</v-card-title>
+                  <v-card-subtitle>{{
+                    project.fields.description
+                  }}</v-card-subtitle>
 
-            <v-card>
-              <v-img height="10em" contain :src="project.fields.photo" />
-              <!-- We don't want to break the title in the middle of a word, so apply word-break -->
-              <v-card-title class="word-break">{{
-                project.fields.name
-              }}</v-card-title>
-              <v-card-subtitle>{{
-                project.fields.description
-              }}</v-card-subtitle>
-
-
-               <v-fade-transition>
+                  <v-fade-transition>
                     <v-overlay v-if="hover" absolute opacity="0.2">
-                          <v-btn :to="'/project/' + project.slug"
-                            >Goto project</v-btn>
- 
-                      <v-btn
-                        target="_blank"
-                        v-if="project.fields.github_link"
-                        :href="project.fields.github_link"
-                        dark
-                        class="ma-2"
-                        >GitHub
-                        <v-icon medium dark class="ml-1">
-                          mdi-github
-                        </v-icon>
-                      </v-btn>
+                      <div
+                        class="d-flex justify-center flex-column flex-sm-row"
+                      >
+                        <v-btn :to="'/project/' + project.slug" class="ma-1"
+                          >Goto project</v-btn
+                        >
+
+                        <v-btn
+                          target="_blank"
+                          v-if="project.fields.github_link"
+                          :href="project.fields.github_link"
+                          dark
+                          class="ma-1"
+                          >GitHub
+                          <v-icon medium dark class="ml-1">
+                            mdi-github
+                          </v-icon>
+                        </v-btn>
+                      </div>
                     </v-overlay>
                   </v-fade-transition>
-            </v-card>
-        </template>
+                </v-card>
+              </template>
             </v-hover>
-
           </v-col>
         </v-row>
       </v-container>
@@ -65,17 +66,17 @@
             sm="6"
             md="4"
           >
-
-           <v-hover>
+            <v-hover>
               <template v-slot:default="{ hover }">
+                <v-card>
+                  <v-img height="10em" contain :src="project.photo" />
+                  <!-- We don't want to break the title in the middle of a word, so apply word-break -->
+                  <v-card-title class="word-break">{{
+                    project.name
+                  }}</v-card-title>
+                  <v-card-subtitle>{{ project.description }}</v-card-subtitle>
 
-            <v-card>
-              <v-img height="10em" contain :src="project.photo" />
-              <!-- We don't want to break the title in the middle of a word, so apply word-break -->
-              <v-card-title class="word-break">{{ project.name }}</v-card-title>
-              <v-card-subtitle>{{ project.description }}</v-card-subtitle>
-
-               <v-fade-transition>
+                  <v-fade-transition>
                     <v-overlay v-if="hover" absolute opacity="0.2">
                       <v-btn
                         target="_blank"
@@ -90,11 +91,9 @@
                       </v-btn>
                     </v-overlay>
                   </v-fade-transition>
-
-            </v-card>
-                </template>
+                </v-card>
+              </template>
             </v-hover>
-    
           </v-col>
         </v-row>
       </v-container>
