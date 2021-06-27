@@ -34,7 +34,9 @@
 
     <!-- Actual view that we're rendering with vue-router -->
     <v-main>
-      <router-view />
+      
+        <router-view />
+      
     </v-main>
 
     <!-- Footer for my name, GitHub and LinkedIn links and butterCMS -->
