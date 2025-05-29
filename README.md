@@ -1,8 +1,3 @@
-# my_website
+# Portfolio website
 
-For my personal project and portfolio website.
-
-- Vue.js (v2)
-- Vuetify
-- SASS
-- ButterCMS
+GitHub pages which hosts my portfolio and project website.
