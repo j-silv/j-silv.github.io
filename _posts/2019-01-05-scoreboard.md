@@ -1,33 +1,40 @@
 ---
 title: "MTG electronic scoreboard"
+description: Construction of a LED life point counter for the trading card game Magic The Gathering. Features include rapid point cycling capability and a scrolling endgame message 
+date: 2019-01-05 11:33:00 +0800
+categories: [Electronics]
+tags: [arduino, c, 'cpp']
+pin: true
+media_subpath: /assets/img/scoreboard
+image:
+  path: /game.jpg
+  alt: Game preview
 ---
 
-https://github.com/j-silv/MTG-electronic-scoreboard
+[![GitHub last commit](https://img.shields.io/github/last-commit/j-silv/MTG-electronic-scoreboard?style=for-the-badge&logo=github&color=black
+)](https://github.com/j-silv/MTG-electronic-scoreboard)
 
-Construction of a LED life point counter for the trading card game Magic: The Gathering. Features include rapid point cycling capability and a scrolling endgame message.
 
-![Game preview](/assets/imgs/scoreboard/game.jpg)
+## Preview
 
-# Preview
+{% include embed/youtube.html id='110aD0rj7Jw' %}
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/110aD0rj7Jw?si=O_wmxot9wSNCBnME" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-# Introduction
+## Introduction
 
 The date is December 14, 2018. A few weeks prior, I had discovered the open-source electronics platform Arduino and promptly bought a "starter kit". After enthusiastically working through its accompanying tutorials, I decided to start my own project: an electronic scoreboard for the trading card game Magic: The Gathering. I credit my best friend Scott for the idea, who suggested that an electronic life point counter would be a nice addition to our friendly matches.
 
-# Concept
+## Concept
 
 The principle of the device is fairly straightforward. A 4-digit 7-segment LED display will be "divided" into two 2-digit displays: one for Player 1, and the other for Player 2. Each player will have two buttons for increasing or decreasing his/her life points in the game.
 
-![Device concept](/assets/imgs/scoreboard/ledbuttons.PNG)
+![Device concept](ledbuttons.PNG)
 
 To keep things interesting, I decided to implement some additional features:
 
 - Rapid life point changing when holding down the buttons for a prolonged amount of time
 - An endgame "losing" message for the first player to reach zero life points (the game is over at this point)
 
-# Plan of attack
+## Plan of attack
 
 I divided my work into three main sections:
 
@@ -36,9 +43,9 @@ I divided my work into three main sections:
 - Soldering of the individual components on perfboard and 3D printing the device's enclosure
 
 
-# Circuit
+## Circuit
 
-![Counter schematic](/assets/imgs/scoreboard/counterschema.PNG)
+![Counter schematic](counterschema.PNG)
 
 The circuit works as follows:
 
@@ -47,9 +54,9 @@ The circuit works as follows:
 3. Depending on which digit is to be displayed, the corresponding base of the connected transistor to that digit's cathode is turned on to allow current to flow from the collector to the emitter. Resistors are sandwiched between the digital pins and the transistors' base to limit current flow.
 4. In order to detect an increase or decrease of life points for one of the players, digital pins 9, 10, 11, and 12 are all pulled HIGH with internal pull-up resistors. Once one of the buttons is pushed, the connected digital pin is pulled LOW, thus triggering a program function.
 
-# Coding
+## Coding
 
-## Displaying each digit separately – Fooling our eyes
+### Displaying each digit separately – Fooling our eyes
 
 To successfully display different numbers for each digit, I took advantage of the persistence of vision. By rapidly turning on and off each digit with its corresponding value one by one, the viewer is fooled into thinking that all the digits of the display are on at the same time (our eye's simply can't keep up with the frequency of the flickering).
 
@@ -135,7 +142,7 @@ void loop() {
 }
 ```
 
-# Increasing/decreasing life points
+## Increasing/decreasing life points
 
 Next is coding the adjustment of life points triggered by the buttons (the following example concerns Player 1 or button "left" but is identical to the program for Player 2 or button "right"). The coding for this quickly became complicated. The main issue resulted from "switch bouncing". Once one the button's was pushed, there was momentary on and off contact between the switch's terminals resulting in superfluous life points being added or subtracted from a single button push. To circumvent this problem, I relied on the microcontroller's internal clock and the Arduino function: millis() to "delay" the execution of certain pieces of code.
 
@@ -415,7 +422,7 @@ void loop(){
 }
 ```
 
-# Losing game, scrolling text message
+## Losing game, scrolling text message
 
 Now here's where things get… convoluted (as if they were not already). I decided that having a "scrolling" endgame message would be awesome. At the very least, it seemed more elegant than simply flashing "Player 1 loses" once Player 1 reached 0 life points, since this option would require parsing out the words over multiple LED flashes.
 
@@ -864,11 +871,11 @@ void loop(){
 
 ```
 
-# Soldering and 3D design
+## Soldering and 3D design
 
 As the program worked with the components connected via a breadboard, it was time to finalize the electronic side of the project by soldering all the components together on a perfboard. For my first ever soldering job, I was pretty happy!
 
-![Device enclosure](/assets/imgs/scoreboard/solder.jpg)
+![Device enclosure](solder.jpg)
 
 In terms of 3D design, I used Fusion 360 to design a 3D printable enclosure as well as a battery pack. I ended up not using my own battery pack since it added too much thickness to the overall design. Instead, I used a commercially available AA battery pack.
 
@@ -878,23 +885,23 @@ The design is made up of three separate parts that can be connected together wit
 - The second component is the battery pack which houses 4 AA batteries to power the Arduino
 - The final piece is simply a lid that will cover the back of the soldered perfboard and create a closed structure
 
-![Top piece](/assets/imgs/scoreboard/piece1.png)
+![Top piece](piece1.png)
 
-![Back of top piece](/assets/imgs/scoreboard/piece1back.png)
+![Back of top piece](piece1back.png)
 
-![Battery pack](/assets/imgs/scoreboard/piece2.png)
+![Battery pack](piece2.png)
 
-![Back cover](/assets/imgs/scoreboard/piece3.png)
+![Back cover](piece3.png)
 
 A huge thanks to the Innovation Hub at Florida State University for providing freely accessible electronic and mechanical equipment, as well as to their friendly staff!
 
-# Final product
+## Final product
 
 Some last-minute tasks included connecting a main power switch from the battery to the Arduino, hot gluing the circuit board to the inside of the 3D printed enclosure and adding red LED filter paper to facilitate the reading of the display. Here are some pictures and videos of the final result:
 
-![Finished product](/assets/imgs/scoreboard/finished.jpg)
+![Finished product](finished.jpg)
 
-![Game](/assets/imgs/scoreboard/game.jpg)
+![Game](game.jpg)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/110aD0rj7Jw?si=rzwZmBjDBR4_p9r6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+{% include embed/youtube.html id='110aD0rj7Jw' %}
 
