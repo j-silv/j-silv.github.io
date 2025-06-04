@@ -1,10 +1,9 @@
 ---
 title: "MTG electronic scoreboard"
 description: Construction of a LED life point counter for the trading card game Magic The Gathering. Features include rapid point cycling capability and a scrolling endgame message 
-date: 2019-01-05 11:33:00 +0800
 categories: [Electronics]
 tags: [arduino, c, 'cpp']
-pin: true
+pin: False
 media_subpath: /assets/img/scoreboard
 image:
   path: /game.jpg
